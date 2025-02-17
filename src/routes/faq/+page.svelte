@@ -1,3 +1,11 @@
+<svelte:head>
+	<title>FAQ - Smart-O-Mat</title>
+	<meta
+		name="description"
+		content="Häufig gestellte Fragen - Weitere Informationen über den Smart-O-Maten."
+	/>
+</svelte:head>
+
 <div class="mx-auto max-w-3xl space-y-4">
 	<a href="/" class="anchor font-['JetBrainsMono']"><p>← Zurück</p></a>
 

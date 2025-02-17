@@ -70,6 +70,11 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Thesen Zustimmung - Smart-O-Mat</title>
+	<meta name="description" content="Das auswählen der Zustimmung des Nutzers zu den Thesen." />
+</svelte:head>
+
 <div class="relative">
 	<div class="flex items-center justify-between gap-4 overflow-x-scroll p-2">
 		{#each theses as thesis, i (thesis)}

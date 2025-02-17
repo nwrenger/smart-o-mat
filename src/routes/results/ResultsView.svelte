@@ -12,7 +12,7 @@
 		<div class="card space-y-3 preset-tonal">
 			<div class="space-y-4 px-6 pt-6">
 				<p><strong>{evaluated_party.party.abbreviation}</strong></p>
-				<P value={evaluated_party.matchPercentage} max={100.0} labelText="text-base"
+				<P value={evaluated_party.matchPercentage} max={100.0} labelText="text-base md:text-lg"
 					>{evaluated_party.matchPercentage.toPrecision(3)}%</P
 				>
 			</div>

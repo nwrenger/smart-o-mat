@@ -34,6 +34,14 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Ergebnisse - Smart-O-Mat</title>
+	<meta
+		name="description"
+		content="Die Ergebnisse mit Vergleich zwischen den Parteien und Einordnung durch Umfragen des Smart-O-Maten."
+	/>
+</svelte:head>
+
 <Tabs value="results" fluid composite listClasses="preset-tonal pt-2 px-2 rounded-md">
 	{#snippet list()}
 		<Tabs.Control value="results" labelBase="btn hover:!filter-none">

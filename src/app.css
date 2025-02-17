@@ -17,7 +17,8 @@
 		overflow-x: hidden;
 	}
 	p,
-	li {
+	li,
+	code {
 		@apply sm:text-lg;
 	}
 	@font-face {

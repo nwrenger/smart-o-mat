@@ -4,6 +4,17 @@
 	import { Modal } from '@skeletonlabs/skeleton-svelte';
 </script>
 
+<svelte:head>
+	<title>Smart-O-Mat</title>
+	<meta
+		name="description"
+		content="Der Smart-O-Mat ist eine weiterentwickelte Version des Wahl-O-Maten. Alle 29 Parteien, die zur
+		Wahl antreten, haben die Wahl-O-Mat-Thesen, die hier als Datensatz verwendet werden,
+		beantwortet. Jetzt sind Sie an der Reihe: Vergleichen Sie Ihre Standpunkte mit den Antworten der
+		Parteien."
+	/>
+</svelte:head>
+
 <div class="mx-auto max-w-3xl space-y-4">
 	<p>
 		Der Smart-O-Mat ist eine weiterentwickelte Version des Wahl-O-Maten. Alle 29 Parteien, die zur

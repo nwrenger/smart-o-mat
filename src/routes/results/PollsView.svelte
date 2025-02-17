@@ -5,6 +5,7 @@
 
 	import { Polls, Query, DataType, Order } from 'german-election-polls';
 	import { Progress, ProgressRing } from '@skeletonlabs/skeleton-svelte';
+	import { TriangleAlert } from 'lucide-svelte';
 
 	interface Poll {
 		percentage: number;
@@ -84,53 +85,90 @@
 		return evaluatedParties.filter((ep) => (partyPercentage(data, ep) ?? 0) >= threshold);
 	}
 
-	function possible2PartyCoalitions(evaluatedParties: EvaluatedParty[], data: PollData) {
-		const majorParties = partiesAboveThreshold(evaluatedParties, data);
+	/**
+	 * Returns all unique combinations of length k from the given array.
+	 * E.g., combinations(['A','B','C'], 2) => [['A','B'], ['A','C'], ['B','C']]
+	 */
+	function combinations<T>(arr: T[], k: number): T[][] {
+		if (k > arr.length || k <= 0) return [];
+		if (k === arr.length) return [arr];
+		if (k === 1) return arr.map((val) => [val]);
 
-		const results = [];
-		for (let i = 0; i < majorParties.length; i++) {
-			for (let j = i + 1; j < majorParties.length; j++) {
-				const sum =
-					(partyPercentage(data, majorParties[i]) ?? 0) +
-					(partyPercentage(data, majorParties[j]) ?? 0);
+		const result: T[][] = [];
+
+		function backtrack(start: number, combo: T[]) {
+			// If we've chosen k items, store the result and return
+			if (combo.length === k) {
+				result.push([...combo]);
+				return;
+			}
+			// Otherwise, keep building
+			for (let i = start; i < arr.length; i++) {
+				combo.push(arr[i]);
+				backtrack(i + 1, combo);
+				combo.pop();
+			}
+		}
+
+		backtrack(0, []);
+		return result;
+	}
+
+	function scaledMajorParties(evaluatedParties: EvaluatedParty[], data: PollData, threshold = 5) {
+		const major = evaluatedParties
+			.map((ep) => ({
+				ep,
+				originalShare: partyPercentage(data, ep) ?? 0
+			}))
+			.filter((p) => p.originalShare >= threshold);
+
+		if (major.length === 0) return [];
+
+		const total = major.reduce((acc, p) => acc + p.originalShare, 0);
+		return major.map((p) => ({
+			ep: p.ep,
+			// scale to new sum = 100
+			scaledShare: (p.originalShare / total) * 100
+		}));
+	}
+
+	function possibleCoalitions(
+		evaluatedParties: EvaluatedParty[],
+		data: PollData,
+		threshold = 5,
+		minSize = 2,
+		maxSize = 3
+	) {
+		const scaledParties = scaledMajorParties(evaluatedParties, data, threshold);
+		if (scaledParties.length === 0) {
+			return [];
+		}
+
+		let results: { coalition: string[]; sum: number }[] = [];
+
+		// For each coalition size from minSize..maxSize:
+		for (let size = minSize; size <= maxSize; size++) {
+			// Generate all combos of that size from scaledParties
+			const allCombos = combinations(scaledParties, size);
+
+			for (const combo of allCombos) {
+				const sum = combo.reduce((acc, x) => acc + x.scaledShare, 0);
+
 				if (sum >= 50) {
 					results.push({
-						coalition: [majorParties[i].party.abbreviation, majorParties[j].party.abbreviation],
+						coalition: combo.map((c) => c.ep.party.abbreviation),
 						sum
 					});
 				}
 			}
 		}
 
-		return results.sort((a, b) => b.sum - a.sum);
-	}
+		// Sort descending by sum
+		results.sort((a, b) => b.sum - a.sum);
+		// Sort ascending by size
+		results.sort((a, b) => a.coalition.length - b.coalition.length);
 
-	function possible3PartyCoalitions(evaluatedParties: EvaluatedParty[], data: PollData) {
-		const majorParties = partiesAboveThreshold(evaluatedParties, data);
-
-		const results = [];
-		for (let i = 0; i < majorParties.length; i++) {
-			for (let j = i + 1; j < majorParties.length; j++) {
-				for (let k = j + 1; k < majorParties.length; k++) {
-					const sum =
-						(partyPercentage(data, majorParties[i]) ?? 0) +
-						(partyPercentage(data, majorParties[j]) ?? 0) +
-						(partyPercentage(data, majorParties[k]) ?? 0);
-					if (sum >= 50) {
-						results.push({
-							coalition: [
-								majorParties[i].party.abbreviation,
-								majorParties[j].party.abbreviation,
-								majorParties[k].party.abbreviation
-							],
-							sum
-						});
-					}
-				}
-			}
-		}
-
-		return results.sort((a, b) => b.sum - a.sum);
+		return results;
 	}
 </script>
 
@@ -148,37 +186,29 @@
 	{:then pollData}
 		{#each evaluate_user_vote($progress, parties) as evaluated_party, i (evaluated_party)}
 			{#if inPolls(pollData, evaluated_party)}
-				<div class="card space-y-2 p-6 preset-tonal">
+				<div class="card space-y-4 p-6 preset-tonal">
 					<p><strong>{evaluated_party.party.abbreviation}</strong></p>
-					<div class="grid grid-cols-[auto_1fr] justify-center gap-2">
-						<p class="flex w-full justify-center">Ihre Zustimmung:</p>
-						<div class="flex items-center justify-center">
-							<Progress value={evaluated_party.matchPercentage} max={100.0} labelText="text-base">
-								{evaluated_party.matchPercentage.toPrecision(3)}%
-							</Progress>
-						</div>
-					</div>
+					<Progress
+						value={evaluated_party.matchPercentage}
+						max={100.0}
+						labelText="text-base md:text-lg"
+					>
+						{evaluated_party.matchPercentage.toPrecision(3)}%
+					</Progress>
 					<div class="grid grid-cols-[auto_1fr] justify-center gap-2">
 						<p class="flex w-full justify-center">In Umfrageergebnissen:</p>
-						<div class="flex items-center justify-center">
+						<div class="flex items-center">
 							{#if (partyPercentage(pollData, evaluated_party) || 0) >= 5}
-								<Progress
-									value={pollData[evaluated_party.party.abbreviation].percentage}
-									max={100.0}
-									labelText="text-base"
-								>
+								<p>
 									{pollData[evaluated_party.party.abbreviation].percentage.toPrecision(3)}%
-								</Progress>
+								</p>
 							{:else}
-								<Progress
-									value={pollData[evaluated_party.party.abbreviation].percentage}
-									max={100.0}
-									labelText="text-base text-error-500"
-									meterBg="bg-error-500"
-								>
-									{pollData[evaluated_party.party.abbreviation].percentage.toPrecision(3)}% (unter
-									5%)
-								</Progress>
+								<div class="flex items-center space-x-2 text-error-500">
+									<TriangleAlert size={18} />
+									<p>
+										{pollData[evaluated_party.party.abbreviation].percentage.toPrecision(3)}%
+									</p>
+								</div>
 							{/if}
 						</div>
 					</div>
@@ -187,31 +217,19 @@
 		{/each}
 
 		<div class="card space-y-3 p-6 preset-tonal">
-			<p><strong>Mögliche 2er-Koalitionen</strong></p>
-			<div class="space-y-2">
-				{#each possible2PartyCoalitions(evaluate_user_vote($progress, parties), pollData) as coalition}
-					<div class="flex items-center justify-between">
-						<p>{coalition.coalition.join(' + ')}</p>
-						<p>{coalition.sum.toFixed(1)}%</p>
-					</div>
+			<p><strong>Mögliche Koalitionen</strong></p>
+			<ul class="list-inside list-disc space-y-2">
+				{#each possibleCoalitions(evaluate_user_vote($progress, parties), pollData) as coalition}
+					<li>
+						{#each coalition.coalition as party, i}
+							<code class="code">{party}</code> {i != coalition.coalition.length - 1 ? ' + ' : ''}
+						{/each}
+						= {coalition.sum.toFixed(1)}%
+					</li>
 				{:else}
-					<p>Keine einfachen 2er-Koalitionen mit &gt;= 50% gefunden.</p>
+					<p>Keine Koalitionen mit &gt;= 50% gefunden.</p>
 				{/each}
-			</div>
-		</div>
-
-		<div class="card space-y-3 p-6 preset-tonal">
-			<p><strong>Mögliche 3er-Koalitionen</strong></p>
-			<div class="space-y-2">
-				{#each possible3PartyCoalitions(evaluate_user_vote($progress, parties), pollData) as coalition}
-					<div class="flex items-center justify-between">
-						<p>{coalition.coalition.join(' + ')}</p>
-						<p>{coalition.sum.toFixed(1)}%</p>
-					</div>
-				{:else}
-					<p>Keine 3er-Koalitionen mit &gt;= 50% gefunden (weitere Kombinationen wären möglich).</p>
-				{/each}
-			</div>
+			</ul>
 		</div>
 	{/await}
 </div>
