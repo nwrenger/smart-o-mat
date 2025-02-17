@@ -1,7 +1,3 @@
 # Smart-O-Mat
 
-## Todos
-
-- [ ] Write to bpb, E-Mail: info@bpb.de
-- [ ] Finish comparison section
-- [ ] Finish poll section
+Welcome to the source code of the `Smart-o-Mat`. Please report any issue you encounter!
