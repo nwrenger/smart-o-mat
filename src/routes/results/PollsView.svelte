@@ -60,6 +60,10 @@
 		return mapping[poll] || undefined;
 	}
 
+	function inPolls(pollData: PollData, evaluated_party: EvaluatedParty): boolean {
+		return !!pollData[evaluated_party.party.abbreviation];
+	}
+
 	function partyPercentage(
 		pollData: PollData,
 		evaluated_party: EvaluatedParty
@@ -138,7 +142,7 @@
 		</div>
 	{:then pollData}
 		{#each evaluate_user_vote($progress, parties) as evaluated_party, i (evaluated_party)}
-			{#if (partyPercentage(pollData, evaluated_party) ?? 0) >= 5}
+			{#if inPolls(pollData, evaluated_party)}
 				<div class="card space-y-2 p-6 preset-tonal">
 					<p><strong>{evaluated_party.party.abbreviation}</strong></p>
 					<div class="grid grid-cols-[auto_1fr] justify-center gap-2">
@@ -152,13 +156,25 @@
 					<div class="grid grid-cols-[auto_1fr] justify-center gap-2">
 						<p class="flex w-full justify-center">In Umfrageergebnissen:</p>
 						<div class="flex items-center justify-center">
-							<Progress
-								value={pollData[evaluated_party.party.abbreviation].percentage}
-								max={100.0}
-								labelText="text-base"
-							>
-								{pollData[evaluated_party.party.abbreviation].percentage.toPrecision(3)}%
-							</Progress>
+							{#if (partyPercentage(pollData, evaluated_party) || 0) >= 5}
+								<Progress
+									value={pollData[evaluated_party.party.abbreviation].percentage}
+									max={100.0}
+									labelText="text-base"
+								>
+									{pollData[evaluated_party.party.abbreviation].percentage.toPrecision(3)}%
+								</Progress>
+							{:else}
+								<Progress
+									value={pollData[evaluated_party.party.abbreviation].percentage}
+									max={100.0}
+									labelText="text-base text-error-500"
+									meterBg="bg-error-500"
+								>
+									{pollData[evaluated_party.party.abbreviation].percentage.toPrecision(3)}% (unter
+									5%)
+								</Progress>
+							{/if}
 						</div>
 					</div>
 				</div>
