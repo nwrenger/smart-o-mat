@@ -156,7 +156,9 @@
 
 				if (sum >= 50) {
 					results.push({
-						coalition: combo.map((c) => c.ep.party.abbreviation),
+						coalition: combo
+							.sort((a, b) => b.scaledShare - a.scaledShare)
+							.map((c) => c.ep.party.abbreviation),
 						sum
 					});
 				}
