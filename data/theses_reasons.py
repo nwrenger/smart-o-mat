@@ -25,4 +25,4 @@ def filter_lines(filename):
 
 
 if __name__ == "__main__":
-    filter_lines("input2.txt")
+    filter_lines("theses_reasons.txt")

@@ -28,7 +28,7 @@
 		<article>
 			<p class="opacity-80">
 				{#if party_position?.reason}
-					{party_position.reason}
+					{@html party_position.reason}
 				{:else}
 					Keine Begründung abgegeben!
 				{/if}

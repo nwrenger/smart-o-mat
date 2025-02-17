@@ -1202,48 +1202,196 @@ export const parties: Party[] = [
 			'Der SSW wurde 1948 gegründet. Er ist die politische Interessenvertretung der dänischen Minderheit und der friesischen Volksgruppe und deshalb von der Fünf-Prozent-Hürde befreit. Inhaltlich setzt er einen Schwerpunkt auf Norddeutschland. Der SSW ist mit einem Abgeordneten im Bundestag vertreten.',
 		logo: 'parties/ssw.png',
 		positions: [
-			{ state: State.Approve, reason: '' },
-			{ state: State.Approve, reason: '' },
-			{ state: State.Disprove, reason: '' },
-			{ state: State.Approve, reason: '' },
-			{ state: State.Disprove, reason: '' },
-			{ state: State.Approve, reason: '' },
-			{ state: State.Disprove, reason: '' },
-			{ state: State.Approve, reason: '' },
-			{ state: State.Approve, reason: '' },
-			{ state: State.Disprove, reason: '' },
-			{ state: State.Approve, reason: '' },
-			{ state: State.Disprove, reason: '' },
-			{ state: State.Approve, reason: '' },
-			{ state: State.Disprove, reason: '' },
-			{ state: State.Neutral, reason: '' },
-			{ state: State.Approve, reason: '' },
-			{ state: State.Disprove, reason: '' },
-			{ state: State.Approve, reason: '' },
-			{ state: State.Approve, reason: '' },
-			{ state: State.Approve, reason: '' },
-			{ state: State.Disprove, reason: '' },
+			{
+				state: State.Approve,
+				reason:
+					'Wir wollen, dass der Bund in seiner finanziellen, militärischen, politischen und humanitären Unterstützung der Ukraine nicht nachlässt. Diese Unterstützung muss in enger Abstimmung mit unseren europäischen und internationalen Partnern erfolgen. Der Angriffskrieg Russlands auf die Ukraine ist völkerrechtswidrig und bedroht die europäische Friedensordnung. Wir verurteilen die russische Invasion aufs Schärfste und lehnen die Instrumentalisierung von Minderheiten im Zusammenhang des Krieges ab. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Approve,
+				reason:
+					'Unser Energiesystem muss auf erneuerbaren Energien wie Sonne und Wind basieren, statt weiter auf fossile Brennstoffe wie Kohle, Öl und Gas zu setzen. Wir wollen Erneuerbare Energien überall dort fördern, wo es sinnvoll ist. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Die Einführung des Bürgergeldes war ein Schritt in die richtige Richtung, reicht aber nicht aus. Wir wollen die bisherigen Erfahrungen mit der Einführung des Bürgergeldes evaluieren und Nachbesserungen umsetzen. Von pauschalen Sanktionierungen halten wir nichts. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Approve,
+				reason:
+					'Wir wollen ein generelles Tempolimit von 130 km/h auf den Autobahnen. Die Einführung eines Tempolimits auf Autobahnen kostet nichts, ist sofort umsetzbar, erhöht die Verkehrssicherheit und leistet einen Beitrag zum Klimaschutz. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Wir wollen gemeinsame Lösungen für Geflüchtete auf der Ebene der Europäischen Union voranbringen, die von allen Mitgliedstaaten getragen werden. Dazu gehört eine gerechte Verteilung geflüchteter Menschen unter allen EU-Staaten. Nationale Alleingänge und Grenzschließungen der Binnengrenzen sind keine Lösung und gefährden den Zusammenhalt der EU. Wir dürfen das Grundrecht auf Asyl nicht aushöhlen. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Approve,
+				reason:
+					'Das Recht auf Wohnen ist ein Menschenrecht. Aktuell ist es jedoch schwer in manchen Regionen noch vernünftige Wohnungen zu bezahlbaren Preisen zu bekommen. Der Bund muss die Kommunen stärker finanziell unterstützen, um bezahlbaren und qualitativ hochwertigen Wohnraum zu schaffen. Als SSW unterstützen wir darum auch die Forderungen zur Weiterführung der Mietpreisbremse und des bundesweiten Mietendeckels. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Sicherheit findet ihre Grenzen, wenn zweifelhafte Verschärfungen, Überwachungen und Strafen nichts bewirken oder die Falschen treffen. Um den Gefahren durch Terrorismus oder organisierte Kriminalität effektiv entgegentreten zu können, brauchen wir eine wirksame, aber  maßvolle Sicherheitspolitik, die Voraussetzungen für die Bekämpfung von Kriminalität schafft, ohne Freiheitsrechte unnötig einzuschränken. Dafür braucht die Polizei eine geeignete technische Ausrüstung und genügend Einsatzkräfte. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Approve,
+				reason:
+					'Wir wollen, dass gerade die energieintensiven Unternehmen von der günstigen grünen Energie profitieren. Dafür muss günstige Energie für Unternehmen besser verfügbar gemacht werden. Insgesamt müssen die Energiepreise sinken. Wir müssen die Bedingungen dafür schaffen, dass wir gute Industriearbeitsplätze für das 21. Jahrhundert erhalten und hinzubekommen. Bei Ansiedlungen von energieintensiven Industrien wollen wir die direkte Nutzung von Windstrom erleichtern. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Approve,
+				reason:
+					'Eine Erhöhung des Renteneintrittsalters lehnen wir ab. Wir wollen eine sozial gerechte gesetzliche Rentenversicherung als tragende Säule der Altersvorsorge. Die Einführung der Grundrente ist ein Schritt in die richtige Richtung. Unser langfristiges Ziel ist eine solidarisches, umlagefinanzierte Erwerbstätigenversicherung, die alle Erwerbstätigen und Einkommensarten einbezieht und geschlechtergerecht ausgestaltet ist. Damit die breitesten Schultern auch die größten Lasten tragen. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Wir wollen eine klare Trennung von Staat und Kirche. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Approve,
+				reason:
+					'Gerade in Zeiten des Fachkräfte- und allgemeinen Arbeitskräftemangels leisten Zugewanderte einen wertvollen Beitrag zur Stärkung unserer Wirtschaft und Gesellschaft. Das heißt aber auch, dass wir einen unbürokratischen und einfachen Zugang in den Arbeitsmarkt brauchen. Dazu gehören die schnelle Integration in den Arbeitsmarkt, der Zugang zu Bildung und Spracherwerb, psychosoziale Unterstützung sowie die Schaffung von Möglichkeiten zur gesellschaftlichen und politischen Teilhabe. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Unser Energiesystem muss auf günstigen und erneuerbaren Energien wie Sonne und Wind basieren. Der Blick zurück und das Flirten mit den vermeintlich günstigen fossilen Energien oder gar Atomstrom ist verführerisch und falsch. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Approve,
+				reason:
+					'Wir wollen extrem hohe Einkommen und Gewinne angemessen besteuern. Es geht uns nicht um Sozialneid den Vermögendsten gegenüber. Aber die Steuersätze für diese Kategorie sollen auf ein angemessenes Niveau angehoben werden, weil starke Schultern mehr tragen können als schwache. Wir wollen zudem die Staatseinnahmen durch Einführung einer Vermögensteuer erhöhen. Dies dient der gerechten Verteilung der steuerlichen Belastung der Bürger:innen. Hier muss es angemessene Freibeträge geben. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Für den SSW ist klar: Bildungschancen dürfen nicht von regionalen Haushaltslagen abhängen. Darum wollen wir, dass der Bund einen Bildungsfonds einrichtet, um den Ländern und finanziell schwachen Kommunen bei der Modernisierung von Schulen, der Digitalisierung und der Ausstattung zu unterstützen. Unser Ziel ist ein gerechtes und modernes Bildungssystem, das Menschen in jeder Lebensphase die Chance bietet, ihre Potenziale zu entfalten und aktiv an der Gesellschaft teilzuhaben. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Neutral,
+				reason:
+					'Wir verurteilen den Angriff der Hamas auf Israel auf das Schärfste. Dieser Angriff hat nicht nur das Leiden unzähliger Zivilist:innen in der Region verstärkt, sondern auch die Sicherheitslage in der gesamten Region destabilisiert. Israel hat ein Recht auf Selbstverteidigung. Es muss jedoch sichergestellt werden, dass die Ausübung dieses Rechts im Einklang mit dem internationalen Völkerrecht steht. Die Zivilbevölkerung muss geschützt werden. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Approve,
+				reason:
+					'Wir wollen die Trennung in gesetzliche und private Krankenversicherungen abschaffen. Von einer Bürger:innenvollversicherung sollen alle Standardleistungen abgedeckt werden; für zusätzliche Leistungen können nach Wunsch individuelle Versicherungslösungen abgeschlossen werden. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Wir wollen die Erfüllung ausgewogener Geschlechterquoten und den Anteil von Frauen in Führungspositionen erhöhen. Bestehende Ungleichheiten zwischen Geschlechtern gilt es zu beseitigen. Darum unterstützen wir gezielte Maßnahmen zur Förderung der Gleichstellung und Vielfalt in allen Bereichen der Gesellschaft. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Approve,
+				reason:
+					'Wir wollen so schnell wie möglich eine bäuerlich geprägte Landwirtschaft, die ressourcenschonend und nachhaltig arbeitet, Aspekte des Tierwohls, der Biodiversität, des Gewässer- und des Bodenschutzes stärker berücksichtigt und es mit den Herausforderungen des Klimawandels und der Wetterextreme aufnehmen kann. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Approve,
+				reason:
+					'Unser nordisches Demokratieverständnis ist davon geprägt, dass wir uns auch mit Positionen auseinandersetzen, die wir ablehnen. Dabei dürfen wir nicht blind gegenüber Positionen und Verhaltensweisen sein, die unsere liberale Demokratie gefährden. Wir wollen Mittel für politische Bildung und Demokratieinitiativen auf Maßnahmen lenken, die sich gegen Rassismus, Antisemitismus und Diskriminierung stellen. Die Maßnahmen sollten frühzeitiger und verpflichtender Teil der politischen Bildung sein. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Approve,
+				reason:
+					'Wir wollen das deutsche Lieferkettengesetz weiterhin so unbürokratisch wie möglich gestalten. Und trotzdem ist klar: Deutsche Unternehmen tragen auch in ihren Zulieferbetrieben im Ausland Verantwortung für die Einhaltung von Umweltstandards und Menschenrechten. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Wir wollen eine Reform des BAföG-Systems. Dazu gehört ein elternunabhängiges und altersunabhängiges BAföG nach skandinavischem Vorbild, damit alle Menschen unabhängig von finanziellen oder familiären Bedingungen Zugang zu Bildung erhalten können. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
 			{
 				state: State.Disprove,
 				reason:
 					'Wir wollen eine Reform der Schuldenbremse, die mehr Investitionen erlaubt z.B. in Ausbau der Infrastruktur, Bekämpfung des Klimawandels und Bildung.'
 			},
-			{ state: State.Approve, reason: '' },
-			{ state: State.Disprove, reason: '' },
-			{ state: State.Neutral, reason: '' },
-			{ state: State.Disprove, reason: '' },
-			{ state: State.Disprove, reason: '' },
-			{ state: State.Approve, reason: '' },
-			{ state: State.Approve, reason: '' },
-			{ state: State.Disprove, reason: '' },
-			{ state: State.Disprove, reason: '' },
-			{ state: State.Disprove, reason: '' },
-			{ state: State.Disprove, reason: '' },
-			{ state: State.Disprove, reason: '' },
-			{ state: State.Approve, reason: '' },
-			{ state: State.Disprove, reason: '' },
-			{ state: State.Disprove, reason: '' },
-			{ state: State.Approve, reason: '' }
+			{
+				state: State.Approve,
+				reason:
+					'Gerade in Zeiten des Fachkräfte- und allgemeinen Arbeitskräftemangels leisten Zugewanderte einen wertvollen Beitrag zur Stärkung unserer Wirtschaft und Gesellschaft. Das heißt aber auch, dass wir einen unbürokratischen und einfachen Zugang in den Arbeitsmarkt brauchen. Dazu gehören die schnelle Integration in den Arbeitsmarkt, der Zugang zu Bildung und Spracherwerb, psychosoziale Unterstützung sowie die Schaffung von Möglichkeiten zur gesellschaftlichen und politischen Teilhabe. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Nichts ist so teuer wie kein Klimaschutz. Darum wollen wir, dass Deutschland bereits deutlich vor 2045 klimaneutral wird; idealerweise schon bis 2035, wenn dies technisch und sozialverträglich möglich ist. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Neutral,
+				reason:
+					'Wir unterstützen Initiativen, welche die Arbeitsbelastung begrenzen und die Vereinbarkeit von Familie und Beruf erleichtern. Dabei orientieren wir uns auch gerne an flexiblen Arbeitszeitmodellen nach skandinavischem Vorbild. Wir wollen, dass neue Arbeitszeit- und Arbeitsortformen in einen gesetzlichen Regelungsrahmen überführt werden. Dieser muss vor Überforderung und Entgrenzung schützen, aber genügend Freiraum für die individuelle Ausgestaltung der Arbeit lassen. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Wir fordern die Entkriminalisierung des Schwangerschaftsabbruchs. Frauen müssen Selbstbestimmung über ihren eigenen Körper haben. Statt generell rechtsbrüchiger Schwangerschaftsabbrüche, die unter bestimmten Umständen straffrei bleiben, wollen wir ein generelles Recht auf Schwangerschaftsabbruch nach nordischem Vorbild. Zudem fordern wir sicheren und diskriminierungsfreien Zugang zu Schwangerschaftsabbrüchen. Statt Pflichtberatung fordern wir freiwillige und unkomplizierte Beratungsangebote. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Deutschland profitiert enorm von einer starken Europäischen Union und einer gemeinsamen Währung. Als SSW bekennen wir uns darum zu einem starken Euro. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Approve,
+				reason:
+					'Damit wir die Klimaziele erreichen können, muss auch im Verkehrssektor der CO2-Ausstoß effektiv gesenkt werden. Dies kann durch Verkehrsverlagerung und -vermeidung, Effizienzsteigerung bei allen Verkehrsträgern und stärkeren Einsatz von Elektromobilität erreicht werden. Wir müssen Modernisierung und Ausbau der Bahn weiter vorantreiben. Die Bahn wird erst dann eine echte Alternative zum Individualverkehr sein, wenn sie gut funktioniert und attraktiv für Menschen in der Stadt und auf dem Land ist. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Approve,
+				reason:
+					'Es braucht eine bessere Anerkennung und Würdigung des Ehrenamts. Als SSW wollen wir, dass das Ehrenamt stärker in Renten- und Sozialversicherungsanwartschaften berücksichtigt wird, um eine langfristige soziale Absicherung ehrenamtlich tätiger Bürger:innen zu fördern. Der große Zeitaufwand fürs Ehrenamt, das unsere Gesellschaft zusammenhält, soll sich auch in der Altersrente niederschlagen. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Als SSW wollen wir die Mieterinnen und Mieter finanziell entlasten und sehen es darum als möglichen Schritt, mehr bezahlbaren Wohnraum zu schaffen. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Als SSW lehnen wir Einschränkungen des Streikrechts entschieden ab. Es sollte ein Grundrecht für alle Arbeitnehmenden sein. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Wir setzen uns für mehr Bürgerbeteiligung in der Politik ein. Darum wollen wir Bürgerräte als beratende Organe aus der Mitte der Gesellschaft weiter unterstützen, um die demokratische Teilhabe zu stärken. Klar ist: Bürgerbeteiligung darf nur eine sinnvolle Ergänzung zu unserer repräsentativen Demokratie sein. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Gewalttätige, aggressive Kinder mit schwierigem Sozialverhalten sind keine Kinder, die man sanktionieren muss, sondern Kinder in höchster Not. Für den SSW ist darum klar: Wir wollen mehr präventive Maßnahmen, um durch frühe Hilfen ein gesundes Umfeld für resiliente Kinder zu schaffen. Ziel muss es sein, dass Kinder und Jugendliche gar nicht erst zu Tätern werden. Wir müssen Frust und Armut von Kindern und Jugendlichen mit umfassenden Unterstützungsangeboten entgegnen. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Wir sind ein exportorientiertes Land und profitieren stark von einer starken Europäischen Union. Darum muss klar sein: Wir müssen gemeinsam mit unseren europäischen Partner Lösungen finden, um im internationalen Wettbewerb mit Großmächten zu bestehen. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Approve,
+				reason:
+					'Als Partei der nationalen Minderheit der Dänen ist für den SSW klar: Es muss weiterhin erlaubt sein eine zweite Staatsbürgerschaft zu haben. Doppelte Staatsbürgerschaft ist kein Problem, sondern eine Bereicherung. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Wir wollen, dass der Bund sich für den Erhalt  niedrigschwelliger Orientierungsmöglichkeiten durch freiwillige Dienste für junge Menschen einsetzt.  Freiwilligendienste sind ein unverzichtbares soziales Engagement, denn sie setzen einen klaren Schwerpunkt auf persönliche Entwicklung und demokratische Bildung. Darum müssen sie besser finanziell unterstützt werden, um auch in Zukunft bestehen zu können. Dabei ist es wichtig, dass die Dienste freiwillig bleiben - einen Zwangsdienst lehnen wir ab. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Disprove,
+				reason:
+					'Um einen schnellen Umstieg auf das CO2-freie Heizen zu fördern, soll der Bund gewährleisten, dass Wärmenetze überall dort aus- oder neu gebaut werden, wo sie sinnvoll sind. Wichtig ist zudem, dass die Bürger:innen bei der Zukunft der Wärmeversorgung nicht alleingelassen werden. Die Wärmeversorgung muss für alle bezahlbar bleiben. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			},
+			{
+				state: State.Approve,
+				reason:
+					'Wir wollen einen armutsfesten Mindestlohn in Höhe von mindestens 15 Euro pro Stunde. Das gilt es im Mindestlohngesetz als Ziel zu definieren. Bei der Fortentwicklung müssen wir uns an der Kaufkraft, Lohnentwicklung sowie der Inflation orientieren. <b>Diese Begründung wurde auf Wunsch des SSW am 11.02.2025 - nach der Veröffentlichung des Wahl-O-Mat - hinzugefügt.</b>'
+			}
 		]
 	},
 	{
