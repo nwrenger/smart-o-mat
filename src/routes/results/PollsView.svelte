@@ -34,11 +34,16 @@
 			for (const result of survey.results) {
 				let abbr = normalizeAbbreviation(result.party.shortcut);
 				if (abbr) {
-					let count = pollData[abbr]?.count + 1 || 1;
-					let countShare = count / (count + 1);
-					let prevPercentage = pollData[abbr]?.percentage || 0;
-					let percentage = prevPercentage * countShare + result.result / count;
-					pollData[abbr] = { percentage, count };
+					let oldCount = pollData[abbr]?.count ?? 0;
+					let newCount = oldCount + 1;
+
+					let oldAverage = pollData[abbr]?.percentage ?? 0;
+					let newAverage = (oldAverage * oldCount + result.result) / newCount;
+
+					pollData[abbr] = {
+						percentage: newAverage,
+						count: newCount
+					};
 				}
 			}
 		}
