@@ -13,7 +13,7 @@ export default {
 	plugins: [
 		forms,
 		skeleton({
-			themes: [themes.legacy, themes.crimson]
+			themes: [themes.crimson]
 		})
 	]
 } satisfies Config;
