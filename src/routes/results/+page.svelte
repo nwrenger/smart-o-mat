@@ -23,7 +23,7 @@
 	$progress.url = page.url.pathname;
 
 	let stringified_progress = $derived(btoa(JSON.stringify($progress)));
-	let tab_index = $state('results');
+	let opened_tab = $state('results');
 
 	onMount(() => {
 		// Get data from attribute
@@ -44,8 +44,8 @@
 </svelte:head>
 
 <Tabs
-	value={tab_index}
-	onValueChange={(e) => (tab_index = e.value)}
+	value={opened_tab}
+	onValueChange={(e) => (opened_tab = e.value)}
 	fluid
 	composite
 	listClasses="preset-tonal pt-2 px-2 rounded-md"

@@ -5,10 +5,13 @@
 	import { progress } from '$lib/store';
 	import { Accordion, Progress as P } from '@skeletonlabs/skeleton-svelte';
 	import { ScrollText } from 'lucide-svelte';
+
+	let evaluated_user_votes = evaluate_user_vote($progress, parties);
+	let opened_accordion = $state([evaluated_user_votes.at(0)?.party.abbreviation || '']);
 </script>
 
 <div class="space-y-3">
-	{#each evaluate_user_vote($progress, parties) as evaluated_party, i (evaluated_party)}
+	{#each evaluated_user_votes as evaluated_party (evaluated_party)}
 		<div class="card preset-tonal space-y-3">
 			<div class="space-y-4 px-6 pt-6">
 				<p><strong>{evaluated_party.party.abbreviation}</strong></p>
@@ -16,7 +19,11 @@
 					>{evaluated_party.matchPercentage.toPrecision(3)}%</P
 				>
 			</div>
-			<Accordion collapsible value={i === 0 ? [evaluated_party.party.abbreviation] : ['']}>
+			<Accordion
+				collapsible
+				value={opened_accordion}
+				onValueChange={(e) => (opened_accordion = e.value)}
+			>
 				<Accordion.Item
 					value={evaluated_party.party.abbreviation}
 					controlRounded="rounded-xl"

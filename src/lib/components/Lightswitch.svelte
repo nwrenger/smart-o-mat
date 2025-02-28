@@ -12,7 +12,7 @@
 
 	function handleModeChange(e: { checked: boolean }) {
 		mode = e.checked;
-		localStorage.setItem('theme', mode ? 'dark' : 'light');
+		localStorage.setItem('theme', mode ? 'light' : 'dark');
 	}
 
 	$effect(() => {
