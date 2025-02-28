@@ -12,7 +12,8 @@
 </script>
 
 <Tooltip
-	bind:open
+	{open}
+	onOpenChange={(e) => (open = e.open)}
 	positioning={{ placement: 'top' }}
 	base="flex items-center"
 	triggerBase="btn-icon"

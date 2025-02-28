@@ -188,7 +188,7 @@
 	{:then pollData}
 		{#each evaluate_user_vote($progress, parties) as evaluated_party, i (evaluated_party)}
 			{#if inPolls(pollData, evaluated_party)}
-				<div class="card space-y-4 p-6 preset-tonal">
+				<div class="card preset-tonal space-y-4 p-6">
 					<p><strong>{evaluated_party.party.abbreviation}</strong></p>
 					<Progress
 						value={evaluated_party.matchPercentage}
@@ -205,7 +205,7 @@
 									{pollData[evaluated_party.party.abbreviation].percentage.toPrecision(3)}%
 								</p>
 							{:else}
-								<div class="flex items-center space-x-2 text-error-500">
+								<div class="text-error-500 flex items-center space-x-2">
 									<TriangleAlert size={18} />
 									<p>
 										{pollData[evaluated_party.party.abbreviation].percentage.toPrecision(3)}%
@@ -218,7 +218,7 @@
 			{/if}
 		{/each}
 
-		<div class="card space-y-3 p-6 preset-tonal">
+		<div class="card preset-tonal space-y-3 p-6">
 			<p><strong>Mögliche Koalitionen</strong></p>
 			<ul class="list-inside list-disc space-y-2">
 				{#each possibleCoalitions(evaluate_user_vote($progress, parties), pollData) as coalition}

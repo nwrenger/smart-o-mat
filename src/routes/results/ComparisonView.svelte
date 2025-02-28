@@ -14,7 +14,7 @@
 </script>
 
 <div class="space-y-3">
-	<div class="card overflow-x-auto p-6 preset-tonal">
+	<div class="card preset-tonal overflow-x-auto p-6">
 		<div class="grid items-center gap-2 md:grid-cols-2">
 			{#each ['Partei 1', 'Partei 2'] as party, i (party)}
 				<label class="label">
@@ -29,7 +29,7 @@
 		</div>
 	</div>
 
-	<div class="card hidden overflow-x-auto p-6 preset-tonal md:block">
+	<div class="card preset-tonal hidden overflow-x-auto p-6 md:block">
 		<div class="grid grid-cols-4 gap-2">
 			<p class="text-center font-bold">These</p>
 			<p class="text-center font-bold">Ihre Position</p>
@@ -40,7 +40,7 @@
 	</div>
 
 	{#each theses as thesis, i}
-		<div class="card grid grid-cols-1 gap-2 overflow-x-auto p-6 preset-tonal md:grid-cols-4">
+		<div class="card preset-tonal grid grid-cols-1 gap-2 overflow-x-auto p-6 md:grid-cols-4">
 			<div class="flex items-center justify-between space-x-2">
 				<p class="flex items-center font-bold md:font-normal">
 					{i + 1}. {@html thesis.label}

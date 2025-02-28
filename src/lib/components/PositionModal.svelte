@@ -13,10 +13,11 @@
 </script>
 
 <Modal
-	bind:open
+	{open}
+	onOpenChange={(e) => (open = e.open)}
 	triggerBase=""
-	contentBase="card bg-surface-100-900 p-4 space-y-4 shadow-xl w-screen max-w-screen-sm"
-	backdropClasses="backdrop-blur-sm"
+	contentBase="card bg-surface-100-900 p-4 space-y-4 shadow-xl w-screen max-w-(--breakpoint-sm)"
+	backdropClasses="backdrop-blur-xs"
 >
 	{#snippet trigger()}
 		<PositionIndicator state={party_position?.state} />

@@ -30,15 +30,19 @@
 		{#each theses as thesis, i}
 			{#if $progress.user_positions[i]}
 				{@const state = $progress.user_positions[i]?.state}
-				<div class="card flex items-center justify-between space-x-2 p-6 preset-tonal">
-					<div class="flex space-x-4 space-y-2">
+				<div class="card preset-tonal flex items-center justify-between space-x-2 p-6">
+					<div class="flex space-y-2 space-x-4">
 						<Switch
+							checked={$progress.user_positions[i].double_weighted}
+							onCheckedChange={(e) => {
+								if ($progress.user_positions[i]?.double_weighted)
+									$progress.user_positions[i].double_weighted = e.checked;
+							}}
 							name="compact"
-							controlWidth="!w-10 !h-10"
+							controlWidth="w-10! h-10!"
 							controlInactive="preset-filled-surface-300-700"
 							controlActive="preset-filled-primary-500"
 							compact
-							bind:checked={$progress.user_positions[i].double_weighted}
 						>
 							{#snippet inactiveChild()}1x{/snippet}
 							{#snippet activeChild()}2x{/snippet}

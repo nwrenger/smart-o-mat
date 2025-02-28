@@ -23,6 +23,7 @@
 	$progress.url = page.url.pathname;
 
 	let stringified_progress = $derived(btoa(JSON.stringify($progress)));
+	let tab_index = $state('results');
 
 	onMount(() => {
 		// Get data from attribute
@@ -42,17 +43,23 @@
 	/>
 </svelte:head>
 
-<Tabs value="results" fluid composite listClasses="preset-tonal pt-2 px-2 rounded-md">
+<Tabs
+	value={tab_index}
+	onValueChange={(e) => (tab_index = e.value)}
+	fluid
+	composite
+	listClasses="preset-tonal pt-2 px-2 rounded-md"
+>
 	{#snippet list()}
-		<Tabs.Control value="results" labelBase="btn hover:!filter-none">
+		<Tabs.Control value="results" labelBase="btn hover:filter-none!">
 			{#snippet lead()}<ListTodo size={20} />{/snippet}
 			<div class="w-8 sm:w-full"><div class="truncate">Ergebnis</div></div>
 		</Tabs.Control>
-		<Tabs.Control value="comparison" labelBase="btn hover:!filter-none">
+		<Tabs.Control value="comparison" labelBase="btn hover:filter-none!">
 			{#snippet lead()}<GitCompareArrows size={20} />{/snippet}
 			<div class="w-8 sm:w-full"><div class="truncate">Vergleichen</div></div>
 		</Tabs.Control>
-		<Tabs.Control value="polls" labelBase="btn hover:!filter-none">
+		<Tabs.Control value="polls" labelBase="btn hover:filter-none!">
 			{#snippet lead()}<ChartBar size={20} />{/snippet}
 			<div class="w-8 sm:w-full"><div class="truncate">Umfragen</div></div>
 		</Tabs.Control>
