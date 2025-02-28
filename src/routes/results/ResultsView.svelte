@@ -9,7 +9,7 @@
 
 <div class="space-y-3">
 	{#each evaluate_user_vote($progress, parties) as evaluated_party, i (evaluated_party)}
-		<div class="card space-y-3 preset-tonal">
+		<div class="card preset-tonal space-y-3">
 			<div class="space-y-4 px-6 pt-6">
 				<p><strong>{evaluated_party.party.abbreviation}</strong></p>
 				<P value={evaluated_party.matchPercentage} max={100.0} labelText="text-base md:text-lg"
@@ -30,7 +30,7 @@
 					<!-- Panel -->
 					{#snippet panel()}
 						<div
-							class="flex flex-col items-end space-y-2 md:flex-row md:items-center md:justify-between md:space-x-2 md:space-y-0"
+							class="flex flex-col items-end space-y-2 md:flex-row md:items-center md:justify-between md:space-y-0 md:space-x-2"
 						>
 							<div class="space-y-2">
 								<p><strong>{evaluated_party.party.name}</strong></p>

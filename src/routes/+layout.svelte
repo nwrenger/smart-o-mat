@@ -8,8 +8,8 @@
 	let { children } = $props();
 </script>
 
-<div class="mx-auto flex h-full max-w-screen-2xl flex-col space-y-3 px-4 py-5 md:px-10">
-	<header class="flex-shrink-0">
+<div class="mx-auto flex h-full max-w-(--breakpoint-2xl) flex-col space-y-3 px-4 py-5 md:px-10">
+	<header class="shrink-0">
 		<div class="flex h-12 w-full items-center justify-between">
 			<a class="flex items-center justify-center space-x-2" href="/" title="Startseite">
 				<Lightbulb size={32} />

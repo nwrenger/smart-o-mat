@@ -86,18 +86,18 @@
 				id="thesis-button-{i}"
 				title={thesis.label}
 			>
-				<span class="font-bold">{i + 1}</span>
+				<span class="w-10 font-bold">{i + 1}</span>
 			</button>
 		{/each}
 	</div>
-	<hr class="hr absolute left-0 right-0 top-[50%] z-[-1] !border-surface-300-700" />
+	<hr class="hr border-surface-300-700! absolute top-[50%] right-0 left-0 z-[-1]" />
 </div>
 
 {#each theses as thesis, i (thesis)}
 	{#if isCurrentThesis(i)}
-		<div class="card flex min-h-[260px] flex-col justify-between p-6 preset-tonal sm:min-h-60">
+		<div class="card preset-tonal flex min-h-[260px] flex-col justify-between p-6 sm:min-h-60">
 			<div class="space-y-1">
-				<p class="text-base text-opacity-80">{i + 1}/{theses.length} {@html thesis.label}</p>
+				<p class="text-opacity-80 text-base">{i + 1}/{theses.length} {@html thesis.label}</p>
 				<h4 class="h5 sm:h4">{@html thesis.description}</h4>
 			</div>
 			<div class="flex items-center justify-center space-x-4 pt-1 sm:space-x-10">
