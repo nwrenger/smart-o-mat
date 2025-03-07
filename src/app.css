@@ -8,8 +8,6 @@
 @import '@skeletonlabs/skeleton/optional/presets';
 @import '@skeletonlabs/skeleton/themes/crimson';
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @layer base {
 	html {
 		@apply h-full;

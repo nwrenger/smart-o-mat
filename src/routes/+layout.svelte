@@ -1,10 +1,7 @@
 <script lang="ts">
 	import '../app.css';
-	import { page } from '$app/state';
 	import { Dot, Lightbulb } from 'lucide-svelte';
-	import LightSwitch from '$lib/components/Lightswitch.svelte';
 
-	let current_url = $derived(page.url.pathname);
 	let { children } = $props();
 </script>
 
@@ -29,8 +26,6 @@
 				>
 					Github
 				</a>
-				<Dot />
-				<LightSwitch />
 			</div>
 		</div>
 	</header>
