@@ -77,12 +77,8 @@
 		return pollData[evaluated_party.party.abbreviation]?.percentage;
 	}
 
-	function partiesAboveThreshold(
-		evaluatedParties: EvaluatedParty[],
-		data: PollData,
-		threshold = 5
-	) {
-		return evaluatedParties.filter((ep) => (partyPercentage(data, ep) ?? 0) >= threshold);
+	function emptyPolls(pollData: PollData): boolean {
+		return Object.values(pollData).length == 0;
 	}
 
 	/**
@@ -186,52 +182,58 @@
 			/>
 		</div>
 	{:then pollData}
-		{#each evaluate_user_vote($progress, parties) as evaluated_party, i (evaluated_party)}
-			{#if inPolls(pollData, evaluated_party)}
-				<div class="card preset-tonal space-y-4 p-6">
-					<p><strong>{evaluated_party.party.abbreviation}</strong></p>
-					<Progress
-						value={evaluated_party.matchPercentage}
-						max={100.0}
-						labelText="text-base md:text-lg"
-					>
-						{evaluated_party.matchPercentage.toPrecision(3)}%
-					</Progress>
-					<div class="grid grid-cols-[auto_1fr] justify-center gap-2">
-						<p class="flex w-full justify-center">In Umfrageergebnissen:</p>
-						<div class="flex items-center">
-							{#if (partyPercentage(pollData, evaluated_party) || 0) >= 5}
-								<p>
-									{pollData[evaluated_party.party.abbreviation].percentage.toPrecision(3)}%
-								</p>
-							{:else}
-								<div class="text-error-500 flex items-center space-x-2">
-									<TriangleAlert size={18} />
+		{#if emptyPolls(pollData)}
+			<div class="card preset-tonal space-y-4 p-6">
+				<p><strong>Keine aktuellen Umfrageergebnisse gefunden!</strong></p>
+			</div>
+		{:else}
+			{#each evaluate_user_vote($progress, parties) as evaluated_party, i (evaluated_party)}
+				{#if inPolls(pollData, evaluated_party)}
+					<div class="card preset-tonal space-y-4 p-6">
+						<p><strong>{evaluated_party.party.abbreviation}</strong></p>
+						<Progress
+							value={evaluated_party.matchPercentage}
+							max={100.0}
+							labelText="text-base md:text-lg"
+						>
+							{evaluated_party.matchPercentage.toPrecision(3)}%
+						</Progress>
+						<div class="grid grid-cols-[auto_1fr] justify-center gap-2">
+							<p class="flex w-full justify-center">In Umfrageergebnissen:</p>
+							<div class="flex items-center">
+								{#if (partyPercentage(pollData, evaluated_party) || 0) >= 5}
 									<p>
 										{pollData[evaluated_party.party.abbreviation].percentage.toPrecision(3)}%
 									</p>
-								</div>
-							{/if}
+								{:else}
+									<div class="text-error-500 flex items-center space-x-2">
+										<TriangleAlert size={18} />
+										<p>
+											{pollData[evaluated_party.party.abbreviation].percentage.toPrecision(3)}%
+										</p>
+									</div>
+								{/if}
+							</div>
 						</div>
 					</div>
-				</div>
-			{/if}
-		{/each}
+				{/if}
+			{/each}
 
-		<div class="card preset-tonal space-y-3 p-6">
-			<p><strong>Mögliche Koalitionen</strong></p>
-			<ul class="list-inside list-disc space-y-2">
-				{#each possibleCoalitions(evaluate_user_vote($progress, parties), pollData) as coalition}
-					<li>
-						{#each coalition.coalition as party, i}
-							<code class="code">{party}</code> {i != coalition.coalition.length - 1 ? ' + ' : ''}
-						{/each}
-						= {coalition.sum.toFixed(1)}%
-					</li>
-				{:else}
-					<p>Keine Koalitionen mit &gt;= 50% gefunden.</p>
-				{/each}
-			</ul>
-		</div>
+			<div class="card preset-tonal space-y-3 p-6">
+				<p><strong>Mögliche Koalitionen</strong></p>
+				<ul class="list-inside list-disc space-y-2">
+					{#each possibleCoalitions(evaluate_user_vote($progress, parties), pollData) as coalition}
+						<li>
+							{#each coalition.coalition as party, i}
+								<code class="code">{party}</code> {i != coalition.coalition.length - 1 ? ' + ' : ''}
+							{/each}
+							= {coalition.sum.toFixed(1)}%
+						</li>
+					{:else}
+						<p>Keine Koalitionen mit &gt;= 50% gefunden.</p>
+					{/each}
+				</ul>
+			</div>
+		{/if}
 	{/await}
 </div>
