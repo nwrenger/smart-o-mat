@@ -41,7 +41,7 @@
 						>
 							<div class="space-y-2">
 								<p><strong>{evaluated_party.party.name}</strong></p>
-								<p>{evaluated_party.party.description}</p>
+								<p>{@html evaluated_party.party.description}</p>
 							</div>
 							<ImageLoader
 								ratio="aspect-square border-[20px] border-[white] shadow-md"
