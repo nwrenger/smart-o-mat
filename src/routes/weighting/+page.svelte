@@ -35,7 +35,7 @@
 						<Switch
 							checked={$progress.user_positions[i].double_weighted}
 							onCheckedChange={(e) => {
-								if ($progress.user_positions[i]?.double_weighted)
+								if ($progress.user_positions[i])
 									$progress.user_positions[i].double_weighted = e.checked;
 							}}
 							name="compact"
