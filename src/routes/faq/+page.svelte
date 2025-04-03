@@ -21,9 +21,8 @@
 		<p>
 			Ich bin Nils Wrenger, ein Schüler, der „ein wenig“ programmieren kann. Eine Übersicht über
 			meine weiteren Projekte finden Sie
-			<a href="https://nwrengern.dev/projects" class="anchor" target="_blank">
-				auf meiner Projektseite
-			</a>. Wenn Sie meine Arbeit unterstützen möchten, können Sie das gern
+			<a href="https://nwrenger.dev" class="anchor" target="_blank">auf meiner Projektseite</a>.
+			Wenn Sie meine Arbeit unterstützen möchten, können Sie das gern
 			<a href="https://github.com/sponsors/nwrenger" class="anchor" target="_blank">
 				über GitHub Sponsors
 			</a>
