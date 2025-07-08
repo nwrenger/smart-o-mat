@@ -6,6 +6,7 @@
 	import { Polls, Query, DataType, Order } from 'german-election-polls';
 	import { Progress, ProgressRing } from '@skeletonlabs/skeleton-svelte';
 	import { TriangleAlert } from 'lucide-svelte';
+	import WarningTooltip from '$lib/components/WarningTooltip.svelte';
 
 	interface Poll {
 		percentage: number;
@@ -187,7 +188,7 @@
 				<p><strong>Keine aktuellen Umfrageergebnisse gefunden!</strong></p>
 			</div>
 		{:else}
-			{#each evaluate_user_vote($progress, parties) as evaluated_party, i (evaluated_party)}
+			{#each evaluate_user_vote($progress, parties) as evaluated_party (evaluated_party)}
 				{#if inPolls(pollData, evaluated_party)}
 					<div class="card preset-tonal space-y-4 p-6">
 						<p><strong>{evaluated_party.party.abbreviation}</strong></p>
@@ -207,7 +208,10 @@
 									</p>
 								{:else}
 									<div class="text-error-500 flex items-center space-x-2">
-										<TriangleAlert size={18} />
+										<!-- <TriangleAlert size={18} /> -->
+										<WarningTooltip
+											msg="Die Partei erreicht nach aktuellen Umfragen nicht die 5% Hürde!"
+										/>
 										<p>
 											{pollData[evaluated_party.party.abbreviation].percentage.toPrecision(3)}%
 										</p>
