@@ -137,19 +137,14 @@
 {/each}
 
 <nav class="flex items-center justify-between gap-4">
-	<button
-		type="button"
-		class="btn preset-tonal hover:preset-filled"
-		onclick={prevThesis}
-		title="Zurück"
-	>
+	<button type="button" class="btn preset-tonal" onclick={prevThesis} title="Zurück">
 		<ArrowLeft size={18} />
 		<span class="hidden md:block">Zurück</span>
 	</button>
 
 	<button
 		type="button"
-		class="btn preset-tonal hover:preset-filled"
+		class="btn preset-tonal"
 		onclick={nextThesis}
 		title={$progress.user_positions[$progress.current_thesis] ? 'Weiter' : 'Überspringen'}
 	>

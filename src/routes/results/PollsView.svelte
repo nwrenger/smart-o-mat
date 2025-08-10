@@ -208,7 +208,6 @@
 									</p>
 								{:else}
 									<div class="text-error-500 flex items-center space-x-2">
-										<!-- <TriangleAlert size={18} /> -->
 										<WarningTooltip
 											msg="Die Partei erreicht nach aktuellen Umfragen nicht die 5% Hürde!"
 										/>
@@ -225,7 +224,7 @@
 
 			<div class="card preset-tonal space-y-3 p-6">
 				<p><strong>Mögliche Koalitionen</strong></p>
-				<ul class="list-inside list-disc space-y-2">
+				<ul class="list-inside list-none space-y-2">
 					{#each possibleCoalitions(evaluate_user_vote($progress, parties), pollData) as coalition}
 						<li>
 							{#each coalition.coalition as party, i}

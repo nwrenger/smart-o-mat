@@ -64,11 +64,11 @@
 </div>
 
 <div class="flex w-full items-center justify-between">
-	<a class="btn preset-tonal hover:preset-filled" href="/answering" title="Zurück">
+	<a class="btn preset-tonal" href="/answering" title="Zurück">
 		<ArrowLeft size={18} />
 		<span class="hidden md:block">Zurück</span>
 	</a>
-	<a class="btn preset-tonal hover:preset-filled" href="/results" title="Weiter">
+	<a class="btn preset-tonal" href="/results" title="Weiter">
 		<span class="hidden md:block">Weiter</span>
 		<ArrowRight size={18} />
 	</a>

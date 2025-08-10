@@ -11,10 +11,10 @@
 </svelte:head>
 
 <div class="mx-auto max-w-3xl space-y-4">
-	<a href="/" class="anchor flex items-center justify-start space-x-2">
+	<button class="anchor flex items-center justify-start space-x-2" onclick={() => history?.back()}>
 		<ArrowLeft size={18} />
 		<p>Zurück</p>
-	</a>
+	</button>
 
 	<section class="space-y-3">
 		<h4 class="h4">Wer hat ihn entwickelt?</h4>

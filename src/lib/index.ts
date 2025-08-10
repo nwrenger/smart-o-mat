@@ -1,3 +1,6 @@
+import { goto } from '$app/navigation';
+import { page } from '$app/state';
+
 export interface EvaluatedParty {
 	party: Party;
 	matchPercentage: number;
@@ -94,4 +97,12 @@ export function evaluate_user_vote(progress: Progress, parties: Party[]): Evalua
 			return { party, matchPercentage };
 		})
 		.sort((a, b) => b.matchPercentage - a.matchPercentage);
+}
+
+export function removeQuery(name: string, replace = false) {
+	const url = page.url;
+	url.searchParams.delete(name);
+	goto(url.toString(), {
+		replaceState: replace
+	});
 }

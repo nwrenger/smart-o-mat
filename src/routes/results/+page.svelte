@@ -1,36 +1,29 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import { type Progress } from '$lib';
-	import CopyButton from '$lib/components/CopyButton.svelte';
+	import { type UserPosition } from '$lib';
 	import { progress, progressDefault } from '$lib/store';
 	import { Tabs } from '@skeletonlabs/skeleton-svelte';
-	import {
-		ArrowLeft,
-		ChartBar,
-		ClipboardCheck,
-		ClipboardCopy,
-		GitCompareArrows,
-		ListTodo,
-		RotateCcw
-	} from 'lucide-svelte';
+	import { ArrowLeft, ChartBar, GitCompareArrows, ListTodo, RotateCcw } from 'lucide-svelte';
 	import ResultsView from './ResultsView.svelte';
 	import ComparisonView from './ComparisonView.svelte';
 	import PollsView from './PollsView.svelte';
 	import { onMount } from 'svelte';
+	import CopyProgression from '$lib/components/CopyProgression.svelte';
+	import ShareConflict from '$lib/components/ShareConflict.svelte';
 
 	// save progress
 	$progress.url = page.url.pathname;
 
-	let stringified_progress = $derived(btoa(JSON.stringify($progress)));
 	let opened_tab = $state('results');
+	let share: ShareConflict;
 
 	onMount(() => {
 		// Get data from attribute
-		let data = page.url.searchParams.get('data');
+		let data = page.url.searchParams.get('d');
 		if (data) {
-			let progress_data: Progress = JSON.parse(atob(data));
-			$progress = progress_data;
+			let progress_data: (undefined | UserPosition)[] = JSON.parse(atob(data));
+			share?.openWarning(progress_data);
 		}
 	});
 </script>
@@ -42,6 +35,8 @@
 		content="Die Ergebnisse mit Vergleich zwischen den Parteien und Einordnung durch Umfragen des Smart-O-Maten."
 	/>
 </svelte:head>
+
+<ShareConflict bind:this={share} />
 
 <Tabs
 	value={opened_tab}
@@ -79,7 +74,7 @@
 
 <div class="flex w-full items-center justify-between">
 	<div class="flex items-center space-x-2">
-		<a class="btn preset-tonal hover:preset-filled" href="/weighting" title="Zurück">
+		<a class="btn preset-tonal" href="/weighting" title="Zurück">
 			<ArrowLeft size={18} />
 			<span class="hidden md:block">Zurück</span>
 		</a>
@@ -96,19 +91,5 @@
 			<span class="hidden md:block">Neustarten</span>
 		</button>
 	</div>
-	<CopyButton
-		text="{page.url.href}?data={stringified_progress}"
-		class="btn preset-tonal hover:preset-filled"
-		title="Teilen"
-	>
-		{#snippet child({ copied })}
-			{#if copied}
-				<span class="hidden md:block">Kopiert</span>
-				<ClipboardCheck size={18} />
-			{:else}
-				<span class="hidden md:block">Teilen</span>
-				<ClipboardCopy size={18} />
-			{/if}
-		{/snippet}
-	</CopyButton>
+	<CopyProgression />
 </div>

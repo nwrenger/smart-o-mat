@@ -4,12 +4,17 @@
 
 	interface Props {
 		state: State | undefined;
+		[prop: string]: any;
 	}
 
-	let { state }: Props = $props();
+	let { state, ...restProps }: Props = $props();
 </script>
 
-<span class="btn-icon rounded-full {stateColor(state)}" title={stateText(state)}>
+<span
+	class="btn-icon z-1! rounded-full {stateColor(state)}"
+	title={stateText(state)}
+	{...restProps}
+>
 	{#if state == State.Approve}
 		<Check />
 	{:else if state == State.Neutral}

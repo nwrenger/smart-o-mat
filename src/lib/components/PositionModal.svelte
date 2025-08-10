@@ -2,6 +2,7 @@
 	import type { PartyPosition } from '$lib';
 	import { Modal } from '@skeletonlabs/skeleton-svelte';
 	import PositionIndicator from './PositionIndicator.svelte';
+	import { Ellipsis } from 'lucide-svelte';
 
 	interface Props {
 		party_position: PartyPosition | undefined;
@@ -15,11 +16,12 @@
 <Modal
 	{open}
 	onOpenChange={(e) => (open = e.open)}
-	triggerBase=""
+	triggerBase="relative"
 	contentBase="card bg-surface-100-900 p-4 space-y-4 shadow-xl w-screen max-w-(--breakpoint-sm)"
 	backdropClasses="backdrop-blur-xs"
 >
 	{#snippet trigger()}
+		<span class="badge-icon preset-filled-surface-500 absolute -right-2 bottom-5 z-10 p-1">?</span>
 		<PositionIndicator state={party_position?.state} />
 	{/snippet}
 	{#snippet content()}
