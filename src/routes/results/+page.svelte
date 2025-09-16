@@ -34,6 +34,12 @@
 		name="description"
 		content="Die Ergebnisse mit Vergleich zwischen den Parteien und Einordnung durch Umfragen des Smart-O-Maten."
 	/>
+	<!-- Open Graph -->
+	<meta property="og:title" content="Ergebnisse - Smart-O-Mat" />
+	<meta
+		property="og:description"
+		content="Die Ergebnisse mit Vergleich zwischen den Parteien und Einordnung durch Umfragen des Smart-O-Maten."
+	/>
 </svelte:head>
 
 <ShareConflict bind:this={share} />

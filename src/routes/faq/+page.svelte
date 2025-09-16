@@ -8,6 +8,12 @@
 		name="description"
 		content="Häufig gestellte Fragen – Weitere Informationen über den Smart-O-Maten."
 	/>
+	<!-- Open Graph -->
+	<meta property="og:title" content="FAQ - Smart-O-Mat" />
+	<meta
+		property="og:description"
+		content="Häufig gestellte Fragen – Weitere Informationen über den Smart-O-Maten."
+	/>
 </svelte:head>
 
 <div class="mx-auto max-w-3xl space-y-4">

@@ -16,6 +16,12 @@
 		name="description"
 		content="Die Gewichtung der Thesen - Welche Thesen sind Ihnen besonders wichtig?"
 	/>
+	<!-- Open Graph -->
+	<meta property="og:title" content="Gewichtung - Smart-O-Mat" />
+	<meta
+		property="og:description"
+		content="Die Gewichtung der Thesen - Welche Thesen sind Ihnen besonders wichtig?"
+	/>
 </svelte:head>
 
 <h4 class="h4">Gewichtung der Thesen</h4>

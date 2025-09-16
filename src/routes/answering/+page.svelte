@@ -73,6 +73,12 @@
 <svelte:head>
 	<title>Thesen Zustimmung - Smart-O-Mat</title>
 	<meta name="description" content="Das auswählen der Zustimmung des Nutzers zu den Thesen." />
+	<!-- Open Graph -->
+	<meta property="og:title" content="Thesen Zustimmung - Smart-O-Mat" />
+	<meta
+		property="og:description"
+		content="Das auswählen der Zustimmung des Nutzers zu den Thesen."
+	/>
 </svelte:head>
 
 <div class="relative">
