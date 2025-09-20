@@ -16,13 +16,13 @@
 	/>
 </svelte:head>
 
-<div class="mx-auto max-w-3xl space-y-4">
+<div class="mx-auto max-w-3xl space-y-8">
 	<button class="anchor flex items-center justify-start space-x-2" onclick={() => history?.back()}>
 		<ArrowLeft size={18} />
 		<p>Zurück</p>
 	</button>
 
-	<section class="space-y-3">
+	<section class="space-y-2">
 		<h4 class="h4">Wer hat ihn entwickelt?</h4>
 		<p>
 			Ich bin Nils Wrenger, ein Schüler, der „ein wenig“ programmieren kann. Eine Übersicht über
@@ -36,7 +36,7 @@
 		</p>
 	</section>
 
-	<section class="space-y-3">
+	<section class="space-y-2">
 		<h4 class="h4">Wo kann man das Projekt finden?</h4>
 		<p>
 			Den Smart-O-Mat finden Sie
@@ -47,7 +47,7 @@
 		</p>
 	</section>
 
-	<section class="space-y-3">
+	<section class="space-y-2">
 		<h4 class="h4">Warum habe ich das gemacht?</h4>
 		<p>
 			Irgendwann habe ich mir aus Langeweile den Quellcode des Wahl-O-Maten angeschaut und war
@@ -85,23 +85,7 @@
 		</ul>
 	</section>
 
-	<section class="space-y-3">
-		<h4 class="h4">Datenschutz?!?</h4>
-		<p>
-			Ich selbst erhebe keine Daten. Ihre Antworten werden nur lokal in Ihrem
-			<code class="code">Local Storage</code> gespeichert. Die Seite wird über GitHub Pages
-			gehostet. Weitere Informationen finden Sie in
-			<a
-				href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement"
-				target="_blank"
-				class="anchor"
-			>
-				GitHubs Datenschutzerklärung
-			</a>.
-		</p>
-	</section>
-
-	<section class="space-y-3">
+	<section class="space-y-2">
 		<h4 class="h4">Weitere inhaltliche Fragen</h4>
 		<p>
 			Bei inhaltlichen Fragen kann ich leider nicht weiterhelfen. Schauen Sie stattdessen in den

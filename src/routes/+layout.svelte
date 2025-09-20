@@ -18,6 +18,14 @@
 				</a>
 				<Dot />
 				<a
+					href="https://nwrenger.dev/datenschutz"
+					title="Datenschutz"
+					class="anchor w-10 truncate text-black md:w-fit dark:text-white"
+				>
+					Datenschutz
+				</a>
+				<Dot />
+				<a
 					href="https://github.com/nwrenger/smart-o-mat"
 					target="_blank"
 					rel="noopener noreferrer"
