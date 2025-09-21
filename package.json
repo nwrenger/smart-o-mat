@@ -6,6 +6,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"postbuild": "bunx svelte-sitemap -d https://wahl.nwrenger.dev -i '404.html' -c weekly -r",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -22,6 +23,7 @@
 		"@sveltejs/vite-plugin-svelte": "6.2.0",
 		"@tailwindcss/forms": "0.5.10",
 		"@tailwindcss/typography": "0.5.18",
+		"@tailwindcss/vite": "4.1.13",
 		"german-election-polls": "1.1.7",
 		"lucide-svelte": "0.544.0",
 		"prettier": "3.6.2",
@@ -29,9 +31,9 @@
 		"prettier-plugin-tailwindcss": "0.6.14",
 		"svelte": "5.39.2",
 		"svelte-check": "4.3.1",
+		"svelte-sitemap": "^2.7.1",
 		"tailwindcss": "4.1.13",
 		"typescript": "5.9.2",
-		"vite": "7.1.6",
-		"@tailwindcss/vite": "4.1.13"
+		"vite": "7.1.6"
 	}
 }
