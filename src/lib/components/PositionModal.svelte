@@ -2,7 +2,6 @@
 	import type { PartyPosition } from '$lib';
 	import { Modal } from '@skeletonlabs/skeleton-svelte';
 	import PositionIndicator from './PositionIndicator.svelte';
-	import { Ellipsis } from 'lucide-svelte';
 
 	interface Props {
 		party_position: PartyPosition | undefined;
