@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { evaluate_user_vote, type EvaluatedParty } from '$lib';
 	import { parties } from '$lib/consts';
-	import { progress } from '$lib/store';
+	import { progress } from '$lib/state';
 
 	import { Polls, Query, DataType, Order } from 'german-election-polls';
-	import { Progress, ProgressRing } from '@skeletonlabs/skeleton-svelte';
-	import { TriangleAlert } from 'lucide-svelte';
+	import { Progress } from '@skeletonlabs/skeleton-svelte';
 	import WarningTooltip from '$lib/components/WarningTooltip.svelte';
 
 	interface Poll {
@@ -174,30 +173,34 @@
 <div class="space-y-3">
 	{#await fetchData()}
 		<div class="flex items-center justify-center">
-			<ProgressRing
-				value={null}
-				strokeWidth="8px"
-				size="size-10"
-				meterStroke="stroke-surface-950-50"
-				trackStroke="stroke-surface-200-800"
-			/>
+			<Progress class="w-fit items-center" value={null}>
+				<Progress.Circle>
+					<Progress.CircleTrack />
+					<Progress.CircleRange />
+				</Progress.Circle>
+				<Progress.ValueText />
+			</Progress>
 		</div>
 	{:then pollData}
 		{#if emptyPolls(pollData)}
-			<div class="card preset-tonal space-y-4 p-6">
+			<div class="card text-surface-950-50 preset-tonal space-y-4 p-6">
 				<p><strong>Keine aktuellen Umfrageergebnisse gefunden!</strong></p>
 			</div>
 		{:else}
-			{#each evaluate_user_vote($progress, parties) as evaluated_party (evaluated_party)}
+			{#each evaluate_user_vote(progress.current, parties) as evaluated_party (evaluated_party)}
 				{#if inPolls(pollData, evaluated_party)}
-					<div class="card preset-tonal space-y-4 p-6">
+					<div class="card text-surface-950-50 preset-tonal space-y-4 p-6">
 						<p><strong>{evaluated_party.party.abbreviation}</strong></p>
 						<Progress
 							value={evaluated_party.matchPercentage}
-							max={100.0}
-							labelText="text-base md:text-lg"
+							class="grid grid-cols-[auto_1fr] items-center gap-4"
 						>
-							{evaluated_party.matchPercentage.toPrecision(3)}%
+							<Progress.Label class="text-base md:text-lg">
+								{evaluated_party.matchPercentage.toPrecision(3)}%
+							</Progress.Label>
+							<Progress.Track>
+								<Progress.Range />
+							</Progress.Track>
 						</Progress>
 						<div class="grid grid-cols-[auto_1fr] justify-center gap-2">
 							<p class="flex w-full justify-center">In Umfrageergebnissen:</p>
@@ -222,10 +225,10 @@
 				{/if}
 			{/each}
 
-			<div class="card preset-tonal space-y-3 p-6">
+			<div class="card text-surface-950-50 preset-tonal space-y-3 p-6">
 				<p><strong>Mögliche Koalitionen</strong></p>
 				<ul class="list-inside list-none space-y-2">
-					{#each possibleCoalitions(evaluate_user_vote($progress, parties), pollData) as coalition}
+					{#each possibleCoalitions(evaluate_user_vote(progress.current, parties), pollData) as coalition}
 						<li>
 							{#each coalition.coalition as party, i}
 								<code class="code">{party}</code> {i != coalition.coalition.length - 1 ? ' + ' : ''}

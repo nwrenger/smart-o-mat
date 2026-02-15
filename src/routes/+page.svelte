@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { progress, progressDefault } from '$lib/store';
-	import { Modal } from '@skeletonlabs/skeleton-svelte';
+	import { flyin, opacity } from '$lib/animations';
+	import { progress, progressDefault } from '$lib/state';
+	import { Dialog, Portal } from '@skeletonlabs/skeleton-svelte';
+	import { X } from 'lucide-svelte';
 </script>
 
 <svelte:head>
@@ -37,37 +39,47 @@
 	</p>
 
 	<div>
-		{#if $progress.url}
-			<Modal
-				triggerBase="btn preset-filled-primary-500"
-				contentBase="card bg-surface-100-900 p-4 space-y-4 shadow-xl max-w-(--breakpoint-sm)"
-				backdropClasses="backdrop-blur-xs"
-			>
-				{#snippet trigger()}Start{/snippet}
-				{#snippet content()}
-					<header class="flex justify-between">
-						<h3 class="h3">Speicherstand gefunden!</h3>
-					</header>
-					<article>
-						<p class="opacity-80">
-							Sie haben den Smart-O-Mat bereits begonnen. Möchten Sie dort weitermachen, wo Sie
-							bisher aufgehört haben?
-						</p>
-					</article>
-					<footer class="flex justify-end gap-4">
-						<a class="btn preset-filled-primary-500" href={$progress.url} title="Ja">Ja</a>
-						<button
-							title="Nein"
-							type="button"
-							class="btn preset-filled"
-							onclick={() => {
-								progress.set(progressDefault());
-								goto('/answering');
-							}}>Nein</button
+		{#if progress.current.url}
+			<Dialog>
+				<Dialog.Trigger class="btn preset-filled-primary-500">Start</Dialog.Trigger>
+				<Portal>
+					<Dialog.Backdrop
+						class="bg-surface-50-950/50 fixed inset-0 z-50 backdrop-blur-sm {opacity}"
+					/>
+					<Dialog.Positioner class="fixed inset-0 z-50 flex items-center justify-center p-4">
+						<Dialog.Content
+							class="card bg-surface-100-900 max-w-screen-sm space-y-4 p-4 shadow-xl {flyin}"
 						>
-					</footer>
-				{/snippet}
-			</Modal>
+							<header class="flex items-center justify-between">
+								<Dialog.Title class="text-2xl font-bold">Speicherstand gefunden!</Dialog.Title>
+								<Dialog.CloseTrigger class="btn-icon hover:text-surface-950-50 hover:preset-tonal">
+									<X class="size-4" />
+								</Dialog.CloseTrigger>
+							</header>
+							<Dialog.Description>
+								<p>
+									Sie haben den Smart-O-Mat bereits begonnen. Möchten Sie dort weitermachen, wo Sie
+									bisher aufgehört haben?
+								</p>
+							</Dialog.Description>
+							<footer class="flex justify-end gap-2">
+								<button
+									title="Nein"
+									type="button"
+									class="btn preset-filled"
+									onclick={() => {
+										progress.current = progressDefault();
+										goto('/answering');
+									}}>Nein</button
+								>
+								<a class="btn preset-filled-primary-500" href={progress.current.url} title="Ja">
+									Ja
+								</a>
+							</footer>
+						</Dialog.Content>
+					</Dialog.Positioner>
+				</Portal>
+			</Dialog>
 		{:else}
 			<a class="btn preset-filled-primary-500" href="/answering">Start</a>
 		{/if}

@@ -3,28 +3,28 @@
 	import { page } from '$app/state';
 	import { State, stateColor } from '$lib';
 	import { theses } from '$lib/consts';
-	import { progress } from '$lib/store';
+	import { progress } from '$lib/state';
 	import { Check, Dot, X } from 'lucide-svelte';
 	import ArrowLeft from 'lucide-svelte/icons/arrow-left';
 	import ArrowRight from 'lucide-svelte/icons/arrow-right';
 
 	// save progress
-	$progress.url = page.url.pathname;
+	progress.current.url = page.url.pathname;
 
 	// check consts
-	const isFirstThesis = $derived($progress.current_thesis === 0);
-	const isLastThesis = $derived($progress.current_thesis === theses.length - 1);
+	const isFirstThesis = $derived(progress.current.current_thesis === 0);
+	const isLastThesis = $derived(progress.current.current_thesis === theses.length - 1);
 
-	$effect(() => gotoThesisButton($progress.current_thesis));
+	$effect(() => gotoThesisButton(progress.current.current_thesis));
 
 	/** Determine if on the current thesis. */
 	function isCurrentThesis(index: number) {
-		return $progress.current_thesis === index;
+		return progress.current.current_thesis === index;
 	}
 
 	/** Jump to a particular thesis. */
 	function setThesis(index: number) {
-		$progress.current_thesis = index;
+		progress.current.current_thesis = index;
 	}
 
 	/** Jump to a particular thesis. */
@@ -34,10 +34,10 @@
 	}
 
 	function setUserPosition(i: number, position: State) {
-		if ($progress.user_positions[i]?.state == position) {
-			$progress.user_positions[i] = undefined;
+		if (progress.current.user_positions[i]?.state == position) {
+			progress.current.user_positions[i] = undefined;
 		} else {
-			$progress.user_positions[i] = { state: position, double_weighted: false };
+			progress.current.user_positions[i] = { state: position, double_weighted: false };
 			nextThesis();
 		}
 	}
@@ -56,7 +56,7 @@
 		if (isFirstThesis) {
 			goto('/');
 		} else {
-			setThesis($progress.current_thesis - 1);
+			setThesis(progress.current.current_thesis - 1);
 		}
 	}
 
@@ -65,7 +65,7 @@
 		if (isLastThesis) {
 			goto('/weighting');
 		} else {
-			setThesis($progress.current_thesis + 1);
+			setThesis(progress.current.current_thesis + 1);
 		}
 	}
 </script>
@@ -86,7 +86,7 @@
 		{#each theses as thesis, i (thesis)}
 			<button
 				class="btn-icon btn-icon-sm rounded-full {selectedBorder(isCurrentThesis(i))} {stateColor(
-					$progress.user_positions[i]?.state
+					progress.current.user_positions[i]?.state
 				)}"
 				onclick={() => setThesis(i)}
 				id="thesis-button-{i}"
@@ -101,7 +101,9 @@
 
 {#each theses as thesis, i (thesis)}
 	{#if isCurrentThesis(i)}
-		<div class="card preset-tonal flex min-h-[260px] flex-col justify-between p-6 sm:min-h-60">
+		<div
+			class="card text-surface-950-50 preset-tonal flex min-h-65 flex-col justify-between p-6 sm:min-h-60"
+		>
 			<div class="space-y-1">
 				<p class="text-opacity-80 text-base">{i + 1}/{theses.length} {@html thesis.label}</p>
 				<h4 class="h5 sm:h4">{@html thesis.description}</h4>
@@ -110,7 +112,7 @@
 				<button
 					type="button"
 					class="btn-icon preset-filled-success-500 {selectedBorder(
-						$progress.user_positions[i]?.state == State.Approve
+						progress.current.user_positions[i]?.state == State.Approve
 					)}"
 					title="stimme zu"
 					onclick={() => setUserPosition(i, State.Approve)}
@@ -120,7 +122,7 @@
 				<button
 					type="button"
 					class="btn-icon preset-filled {selectedBorder(
-						$progress.user_positions[i]?.state == State.Neutral
+						progress.current.user_positions[i]?.state == State.Neutral
 					)}"
 					title="neutral"
 					onclick={() => setUserPosition(i, State.Neutral)}
@@ -130,7 +132,7 @@
 				<button
 					type="button"
 					class="btn-icon preset-filled-error-500 {selectedBorder(
-						$progress.user_positions[i]?.state == State.Disprove
+						progress.current.user_positions[i]?.state == State.Disprove
 					)}"
 					title="stimme nicht zu"
 					onclick={() => setUserPosition(i, State.Disprove)}
@@ -143,19 +145,28 @@
 {/each}
 
 <nav class="flex items-center justify-between gap-4">
-	<button type="button" class="btn preset-tonal" onclick={prevThesis} title="Zurück">
+	<button
+		type="button"
+		class="btn text-surface-950-50 preset-tonal"
+		onclick={prevThesis}
+		title="Zurück"
+	>
 		<ArrowLeft size={18} />
 		<span class="hidden md:block">Zurück</span>
 	</button>
 
 	<button
 		type="button"
-		class="btn preset-tonal"
+		class="btn text-surface-950-50 preset-tonal"
 		onclick={nextThesis}
-		title={$progress.user_positions[$progress.current_thesis] ? 'Weiter' : 'Überspringen'}
+		title={progress.current.user_positions[progress.current.current_thesis]
+			? 'Weiter'
+			: 'Überspringen'}
 	>
 		<span class="hidden md:block"
-			>{$progress.user_positions[$progress.current_thesis] ? 'Weiter' : 'Überspringen'}</span
+			>{progress.current.user_positions[progress.current.current_thesis]
+				? 'Weiter'
+				: 'Überspringen'}</span
 		>
 		<ArrowRight size={18} />
 	</button>

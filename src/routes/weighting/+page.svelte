@@ -2,12 +2,12 @@
 	import { page } from '$app/state';
 	import PositionIndicator from '$lib/components/PositionIndicator.svelte';
 	import { theses } from '$lib/consts';
-	import { progress } from '$lib/store';
+	import { progress } from '$lib/state';
 	import { Switch } from '@skeletonlabs/skeleton-svelte';
 	import { ArrowLeft, ArrowRight } from 'lucide-svelte';
 
 	// save progress
-	$progress.url = page.url.pathname;
+	progress.current.url = page.url.pathname;
 </script>
 
 <svelte:head>
@@ -32,26 +32,35 @@
 </p>
 
 <div class="space-y-3">
-	{#if !!$progress.user_positions.find((p) => !!p)}
+	{#if !!progress.current.user_positions.find((p) => !!p)}
 		{#each theses as thesis, i}
-			{#if $progress.user_positions[i]}
-				{@const state = $progress.user_positions[i]?.state}
-				<div class="card preset-tonal flex items-center justify-between space-x-2 p-6">
+			{#if progress.current.user_positions[i]}
+				{@const state = progress.current.user_positions[i]?.state}
+				<div
+					class="card text-surface-950-50 preset-tonal flex items-center justify-between space-x-2 p-6"
+				>
 					<div class="flex space-y-2 space-x-4">
 						<Switch
-							checked={$progress.user_positions[i].double_weighted}
+							checked={progress.current.user_positions[i].double_weighted}
 							onCheckedChange={(e) => {
-								if ($progress.user_positions[i])
-									$progress.user_positions[i].double_weighted = e.checked;
+								if (progress.current.user_positions[i])
+									progress.current.user_positions[i].double_weighted = e.checked;
 							}}
-							name="compact"
-							controlWidth="w-10! h-10!"
-							controlInactive="preset-filled-surface-300-700"
-							controlActive="preset-filled-primary-500"
-							compact
 						>
-							{#snippet inactiveChild()}1x{/snippet}
-							{#snippet activeChild()}2x{/snippet}
+							<Switch.Control>
+								<Switch.Thumb>
+									<Switch.Context>
+										{#snippet children(switch_)}
+											{#if switch_().checked}
+												<span class="text-xs">2x</span>
+											{:else}
+												<span class="text-xs">1x</span>
+											{/if}
+										{/snippet}
+									</Switch.Context>
+								</Switch.Thumb>
+							</Switch.Control>
+							<Switch.HiddenInput />
 						</Switch>
 						<div class="flex w-full items-center justify-between">
 							<div>
@@ -70,11 +79,11 @@
 </div>
 
 <div class="flex w-full items-center justify-between">
-	<a class="btn preset-tonal" href="/answering" title="Zurück">
+	<a class="btn text-surface-950-50 preset-tonal" href="/answering" title="Zurück">
 		<ArrowLeft size={18} />
 		<span class="hidden md:block">Zurück</span>
 	</a>
-	<a class="btn preset-tonal" href="/results" title="Weiter">
+	<a class="btn text-surface-950-50 preset-tonal" href="/results" title="Weiter">
 		<span class="hidden md:block">Weiter</span>
 		<ArrowRight size={18} />
 	</a>

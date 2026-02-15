@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Thesis } from '$lib';
-	import { Tooltip } from '@skeletonlabs/skeleton-svelte';
+	import { Portal, Tooltip } from '@skeletonlabs/skeleton-svelte';
 	import { ScrollText } from 'lucide-svelte';
 
 	interface Props {
@@ -15,15 +15,19 @@
 	{open}
 	onOpenChange={(e) => (open = e.open)}
 	positioning={{ placement: 'top' }}
-	base="flex items-center"
-	triggerBase="btn-icon"
-	contentBase="card preset-filled text-center p-4 max-w-[calc(100vw-30px)]"
-	openDelay={0}
+	openDelay={50}
 	closeDelay={50}
 	closeOnClick={false}
 	closeOnPointerDown={false}
-	onclick={() => (open = !open)}
 >
-	{#snippet trigger()}<ScrollText size={20} />{/snippet}
-	{#snippet content()}{@html thesis.description}{/snippet}
+	<Tooltip.Trigger class="btn-icon" onclick={() => (open = !open)}>
+		<ScrollText size={20} /></Tooltip.Trigger
+	>
+	<Portal>
+		<Tooltip.Positioner>
+			<Tooltip.Content class="card preset-filled max-w-[calc(100vw-50px)] p-4 text-center">
+				{@html thesis.description}
+			</Tooltip.Content>
+		</Tooltip.Positioner>
+	</Portal>
 </Tooltip>

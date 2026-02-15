@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import CopyButton from '$lib/components/CopyButton.svelte';
-	import { progress } from '$lib/store';
+	import { progress } from '$lib/state';
 	import { ClipboardCheck, ClipboardCopy } from 'lucide-svelte';
 
 	interface Props {
@@ -10,10 +10,14 @@
 
 	let { copyText = 'Teilen' }: Props = $props();
 
-	let stringified_progress = $derived(btoa(JSON.stringify($progress.user_positions)));
+	let stringified_progress = $derived(btoa(JSON.stringify(progress.current.user_positions)));
 </script>
 
-<CopyButton text="{page.url.href}?d={stringified_progress}" class="btn preset-tonal" title="Teilen">
+<CopyButton
+	text="{page.url.href}?d={stringified_progress}"
+	class="btn text-surface-950-50 preset-tonal"
+	title="Teilen"
+>
 	{#snippet child({ copied })}
 		{#if copied}
 			<span class="hidden md:block">Kopiert</span>

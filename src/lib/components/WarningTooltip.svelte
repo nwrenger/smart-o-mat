@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Tooltip } from '@skeletonlabs/skeleton-svelte';
+	import { Portal, Tooltip } from '@skeletonlabs/skeleton-svelte';
 	import { TriangleAlert } from 'lucide-svelte';
 
 	interface Props {
@@ -14,15 +14,21 @@
 	{open}
 	onOpenChange={(e) => (open = e.open)}
 	positioning={{ placement: 'top' }}
-	base="flex items-center"
-	triggerBase="btn-icon size-5! p-0 text-error-500"
-	contentBase="card preset-filled-error-500 text-center p-4 max-w-[calc(100vw-30px)]"
-	openDelay={0}
+	openDelay={50}
 	closeDelay={50}
 	closeOnClick={false}
 	closeOnPointerDown={false}
-	onclick={() => (open = !open)}
 >
-	{#snippet trigger()}<TriangleAlert size={18} />{/snippet}
-	{#snippet content()}{msg}{/snippet}
+	<Tooltip.Trigger class="btn-icon text-error-500 size-5! p-0" onclick={() => (open = !open)}>
+		<TriangleAlert size={18} />
+	</Tooltip.Trigger>
+	<Portal>
+		<Tooltip.Positioner>
+			<Tooltip.Content
+				class="card preset-filled-error-500 max-w-[calc(100vw-50px)] p-4 text-center"
+			>
+				{msg}
+			</Tooltip.Content>
+		</Tooltip.Positioner>
+	</Portal>
 </Tooltip>
