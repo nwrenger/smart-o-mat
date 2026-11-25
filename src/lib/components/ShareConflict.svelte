@@ -20,7 +20,7 @@
 	}
 
 	function close() {
-		removeQuery('d');
+		removeQuery();
 		open = false;
 	}
 </script>

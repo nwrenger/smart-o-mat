@@ -19,7 +19,7 @@
 
 	onMount(() => {
 		// Get data from attribute
-		let data = page.url.searchParams.get('d');
+		let data = page.url.hash.replace('#', '');
 		if (data) {
 			let progress_data: (undefined | UserPosition)[] = JSON.parse(atob(data));
 			share?.openWarning(progress_data);

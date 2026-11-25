@@ -99,9 +99,9 @@ export function evaluate_user_vote(progress: Progress, parties: Party[]): Evalua
 		.sort((a, b) => b.matchPercentage - a.matchPercentage);
 }
 
-export function removeQuery(name: string, replace = false) {
+export function removeQuery(replace = false) {
 	const url = page.url;
-	url.searchParams.delete(name);
+	url.hash = '';
 	goto(url.toString(), {
 		replaceState: replace
 	});

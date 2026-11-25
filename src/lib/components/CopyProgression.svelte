@@ -14,7 +14,7 @@
 </script>
 
 <CopyButton
-	text="{page.url.href}?d={stringified_progress}"
+	text="{page.url.href}#{stringified_progress}"
 	class="btn text-surface-950-50 preset-tonal"
 	title="Teilen"
 >
